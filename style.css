@@ -126,3 +126,8 @@ body {
 .nav-item.center img {
   width: 24px;
 }
+
+.clicked {
+  transform: scale(0.95);
+  transition: 0.2s ease;
+}
