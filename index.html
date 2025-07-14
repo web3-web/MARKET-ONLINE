@@ -1,81 +1,73 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>Xpay Active</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="app.js" defer></script>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header class="header">
-    <div class="logo">Xpay Active</div>
-    <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+  <!-- Header -->
+  <header class="app-header">
+    <div class="logo">
+      <img src="assets/logo.png" alt="Logo">
+      <span>RAJAWALI XPAY</span>
+    </div>
+    <div class="saldo-box">
+      <p>Saldo akun</p>
+      <h3>Rp162</h3>
+      <small>🔵 10</small>
+    </div>
   </header>
 
-  <!-- SIDEBAR -->
-  <aside id="sidebar" class="sidebar hidden">
-    <ul class="sidebar-menu">
-      <li><a href="#" onclick="loadPage('beranda')">🏠 Beranda</a></li>
-      <li><a href="#" onclick="loadPage('transaksi')">🧾 Transaksi</a></li>
-      <li><a href="#" onclick="loadPage('topup')">➕ Topup</a></li>
-      <li><a href="#" onclick="loadPage('akun')">👤 Akun</a></li>
-    </ul>
-  </aside>
+  <!-- Tombol cepat -->
+  <div class="quick-actions">
+    <div class="action"><img src="assets/akun.png"><span>Akun</span></div>
+    <div class="action"><img src="assets/chat.png"><span>Bantuan</span></div>
+    <div class="action"><img src="assets/mutasi.png"><span>Mutasi</span></div>
+    <div class="action"><img src="assets/topup.png"><span>Isi Saldo</span></div>
+  </div>
 
-  <!-- MAIN CONTENT -->
-  <main id="mainContent" class="main">
-    <h2 class="section-title">Produk Digital</h2>
-    <div class="product-grid">
-      <!-- Produk 1 -->
-      <div class="product-card">
-        <img src="assets/pulsa.png" alt="Pulsa 10K" />
-        <h3>Pulsa 10K</h3>
-        <p class="price">Rp 11.000</p>
-        <div class="tags">
-          <span class="rating">★ 4.7</span>
-          <span class="diskon">10% OFF</span>
-        </div>
-        <button class="btn-beli">Beli</button>
-      </div>
+  <!-- Banner -->
+  <div class="banner">
+    <img src="assets/banner.png" alt="Promo WhatsApp">
+  </div>
 
-      <!-- Produk 2 -->
-      <div class="product-card">
-        <img src="assets/data.png" alt="Data 1GB" />
-        <h3>Data 1GB</h3>
-        <p class="price">Rp 12.000</p>
-        <div class="tags">
-          <span class="rating">★ 4.5</span>
-          <span class="diskon">5% OFF</span>
-        </div>
-        <button class="btn-beli">Beli</button>
-      </div>
-
-      <!-- Produk 3 -->
-      <div class="product-card">
-        <img src="assets/game.png" alt="Diamond ML" />
-        <h3>Diamond ML</h3>
-        <p class="price">Rp 16.500</p>
-        <div class="tags">
-          <span class="rating">★ 4.9</span>
-          <span class="diskon">15% OFF</span>
-        </div>
-        <button class="btn-beli">Beli</button>
-      </div>
-
-      <!-- Tambah produk lainnya -->
+  <!-- Kebutuhan Harian -->
+  <section>
+    <h2 class="section-title">Kebutuhan Harian</h2>
+    <div class="menu-grid">
+      <div class="menu-item"><img src="assets/pulsa.png"><span>Pulsa</span></div>
+      <div class="menu-item"><img src="assets/pulsatf.png"><span>Pulsa TF</span></div>
+      <div class="menu-item"><img src="assets/data.png"><span>Paket Data</span></div>
+      <div class="menu-item"><img src="assets/telpon.png"><span>Telp & SMS</span></div>
+      <div class="menu-item"><img src="assets/pln.png"><span>Token PLN</span></div>
+      <div class="menu-item"><img src="assets/digital.png"><span>Digital</span></div>
+      <div class="menu-item"><img src="assets/ewallet.png"><span>E-Wallet</span></div>
+      <div class="menu-item"><img src="assets/tsel.png"><span>Tsel Omni</span></div>
     </div>
-  </main>
+  </section>
 
-  <!-- BOTTOM NAVIGATION -->
-  <nav class="bottom-nav">
-    <button onclick="loadPage('beranda')">🏠</button>
-    <button onclick="loadPage('transaksi')">🧾</button>
-    <button onclick="loadPage('topup')">➕</button>
-    <button onclick="loadPage('akun')">👤</button>
-  </nav>
+  <!-- Tagihan -->
+  <section>
+    <h2 class="section-title">Tagihan</h2>
+    <div class="menu-grid">
+      <div class="menu-item"><img src="assets/pln2.png"><span>Tagihan PLN</span></div>
+      <div class="menu-item"><img src="assets/indihome.png"><span>Indihome</span></div>
+      <div class="menu-item"><img src="assets/gas.png"><span>Gas PGN</span></div>
+      <div class="menu-item"><img src="assets/bpjs.png"><span>BPJS</span></div>
+    </div>
+  </section>
+
+  <!-- Navigasi bawah -->
+  <footer class="bottom-nav">
+    <div class="nav-item active"><img src="assets/home.png"><span>Beranda</span></div>
+    <div class="nav-item"><img src="assets/transaksi.png"><span>Transaksi</span></div>
+    <div class="nav-item center"><img src="assets/more.png"></div>
+    <div class="nav-item"><img src="assets/info.png"><span>Informasi</span></div>
+    <div class="nav-item"><img src="assets/user.png"><span>Akun</span></div>
+  </footer>
 
 </body>
 </html>
