@@ -1,111 +1,37 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FAHDiL Market</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Xpay Active</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="style.css" rel="stylesheet" />
+  <script src="app.js" defer></script>
 </head>
-<body>
-  <aside class="sidebar">
-    <button id="toggleMenu">☰</button>
-    <nav id="sideMenu" class="hidden">
-      <ul>
-        <li><a href="#" data-target="produk">🛍️ Beranda Produk</a></li>
-        <li><a href="#" data-target="owner">🔐 Beranda Owner</a></li>
-        <li><a href="#" data-target="pemilik">🔐 Beranda Pemilik</a></li>
-        <li><a href="#" data-target="statistik">📊 Statistik Admin</a></li>
-      </ul>
-    </nav>
-  </aside>
-
+<body class="dark-theme">
   <header class="header">
-    <h1>💎 FAHDiL Market</h1>
-    <p>Tempat Top Up & Belanja Digital Terpercaya</p>
+    <h1>Xpay Active</h1>
+    <button onclick="toggleSidebar()">☰</button>
   </header>
 
-  <main>
-    <section id="produk" class="page-section">
-      <h2>📦 Daftar Produk</h2>
-      <label>Urutkan:
-        <select id="sortFilter" onchange="urutkanProduk()">
-          <option value="terbaru">Terbaru</option>
-          <option value="termurah">Harga Termurah</option>
-          <option value="termahal">Harga Tertinggi</option>
-          <option value="terlaris">Terlaris</option>
-        </select>
-      </label>
+  <aside id="sidebar" class="sidebar hidden">
+    <div class="sidebar-header">Menu</div>
+    <ul class="sidebar-menu">
+      <li><a href="#" onclick="loadPage('beranda')">Beranda</a></li>
+      <li><a href="#" onclick="loadPage('transaksi')">Transaksi</a></li>
+      <li><a href="#" onclick="loadPage('topup')">Topup</a></li>
+      <li><a href="#" onclick="loadPage('akun')">Akun</a></li>
+    </ul>
+  </aside>
 
-      <div id="formTambah" class="admin-form hidden">
-        <h3>➕ Tambah Produk</h3>
-        <input type="text" id="namaProduk" placeholder="Nama Produk">
-        <input type="number" id="hargaProduk" placeholder="Harga">
-        <input type="file" id="gambarUpload">
-        <input type="number" id="diskonProduk" placeholder="Diskon %">
-        <input type="number" id="ratingProduk" placeholder="Rating (1-5)" max="5">
-        <button onclick="tambahProduk()">Tambah</button>
-      </div>
-
-      <div class="produk-container" id="produkContainer"></div>
-
-      <div class="riwayat-pesanan">
-        <h3>🧾 Riwayat Pembelian Anda</h3>
-        <ul id="riwayatList"></ul>
-      </div>
-    </section>
-
-    <section id="owner" class="page-section hidden">
-      <h2>🔐 Login Owner</h2>
-      <input type="text" id="ownerUser" placeholder="Username">
-      <input type="password" id="ownerPass" placeholder="Password">
-      <button onclick="loginOwner()">Login</button>
-    </section>
-
-    <section id="pemilik" class="page-section hidden">
-      <h2>🔐 Login Pemilik</h2>
-      <input type="text" id="pemilikUser" placeholder="Username">
-      <input type="password" id="pemilikPass" placeholder="Password">
-      <button onclick="loginPemilik()">Login</button>
-    </section>
-
-    <section id="statistik" class="page-section hidden">
-      <h2>📊 Statistik Admin</h2>
-      <div id="statistikContent">
-        <p>Total Produk: <span id="totalProduk">0</span></p>
-        <p>Jumlah Transaksi: <span id="jumlahTransaksi">0</span></p>
-        <p>Produk Terlaris: <span id="produkTerlaris">-</span></p>
-      </div>
-    </section>
+  <main id="mainContent" class="main">
+    <!-- Konten akan dimuat otomatis -->
   </main>
 
-  <div class="popup-struk" id="popupStruk">
-    <h3>🧾 Struk Pembelian</h3>
-    <input type="text" id="namaPembeli" placeholder="Nama Anda">
-    <textarea id="alamatPembeli" placeholder="Alamat Lengkap"></textarea>
-    <button onclick="lanjutWA()">Lanjut ke WhatsApp</button>
-    <button onclick="tutupPopup()">Batal</button>
-  </div>
-
-  <script src="script.js"></script>
-  <script>
-    document.getElementById("toggleMenu").addEventListener("click", () => {
-      document.getElementById("sideMenu").classList.toggle("hidden");
-    });
-
-    document.querySelectorAll('#sideMenu a').forEach(link => {
-      link.addEventListener("click", function () {
-        const target = this.dataset.target;
-        document.querySelectorAll(".page-section").forEach(sec => sec.classList.add("hidden"));
-        document.getElementById(target).classList.remove("hidden");
-        document.getElementById("sideMenu").classList.add("hidden");
-        if (target === "statistik") hitungStatistik();
-      });
-    });
-
-    window.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll(".page-section").forEach(sec => sec.classList.add("hidden"));
-      document.getElementById("produk").classList.remove("hidden");
-    });
-  </script>
+  <nav class="bottom-nav">
+    <button onclick="loadPage('beranda')">🏠</button>
+    <button onclick="loadPage('transaksi')">🧾</button>
+    <button onclick="loadPage('topup')">➕</button>
+    <button onclick="loadPage('akun')">👤</button>
+  </nav>
 </body>
 </html>
