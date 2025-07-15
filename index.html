@@ -60,6 +60,23 @@
     </div>
   </section>
 
+  <!-- Form Pembelian Produk -->
+<section style="padding: 20px; background: #f9fff9;">
+ <h2 class="section-title">Beli Produk</h2>
+  <form id="formTransaksi">
+    <input type="text" id="namaPembeli" placeholder="Nama Anda" required />
+    <select id="produkDipilih" required>
+      <option value="">-- Pilih Produk --</option>
+      <option value="Pulsa">Pulsa</option>
+      <option value="Paket Data">Paket Data</option>
+      <option value="Token PLN">Token PLN</option>
+      <option value="E-Wallet">E-Wallet</option>
+    </select>
+    <button type="submit">Beli Sekarang</button>
+  </form>
+  <p id="notif" style="color: green; margin-top: 10px;"></p>
+</section>
+
   <!-- Navigasi bawah -->
   <footer class="bottom-nav">
     <div class="nav-item active" onclick="location.href='index.html'"><img src="assets/home.png"><span>Beranda</span></div>
@@ -69,5 +86,7 @@
     <div class="nav-item" onclick="location.href='akun.html'"><img src="assets/user.png"><span>Akun</span></div>
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  
 </body>
 </html>
