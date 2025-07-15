@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="logo">
+      <img src="assets/logo.png">
+      <span>Dashboard Admin</span>
+    </div>
+  </header>
+
+  <section class="content">
+    <h2>📊 Ringkasan</h2>
+    <p>Transaksi Terakhir:</p>
+    <div id="dataAdmin"></div>
+    <button onclick="hapusData()">❌ Hapus Riwayat</button>
+  </section>
+
+  <script>
+    const last = localStorage.getItem('transaksiTerakhir');
+    const dataAdmin = document.getElementById('dataAdmin');
+
+    if (last) {
+      const t = JSON.parse(last);
+      dataAdmin.innerHTML = `<b>${t.nama}</b><br>Jumlah: Rp${t.jumlah}<br><small>${t.tanggal}</small>`;
+    } else {
+      dataAdmin.innerText = 'Tidak ada transaksi.';
+    }
+
+    function hapusData() {
+      localStorage.removeItem('transaksiTerakhir');
+      alert('Data transaksi dihapus.');
+      location.reload();
+    }
+  </script>
+</body>
+</html>
