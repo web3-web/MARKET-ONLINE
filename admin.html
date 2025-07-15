@@ -1,40 +1,56 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Admin Panel</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Login Admin</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f0fff4;
+    }
+    .login-box {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 320px;
+      text-align: center;
+    }
+    .login-box img {
+      height: 60px;
+      margin-bottom: 10px;
+    }
+    input {
+      margin-bottom: 10px;
+    }
+  </style>
 </head>
 <body>
-  <header class="app-header">
-    <div class="logo">
-      <img src="assets/logo.png">
-      <span>Dashboard Admin</span>
-    </div>
-  </header>
-
-  <section class="content">
-    <h2>📊 Ringkasan</h2>
-    <p>Transaksi Terakhir:</p>
-    <div id="dataAdmin"></div>
-    <button onclick="hapusData()">❌ Hapus Riwayat</button>
-  </section>
+  <div class="login-box">
+    <img src="../assets/logo.png" alt="Logo Admin">
+    <h2>Login Admin</h2>
+    <input type="text" id="username" placeholder="Username Admin" />
+    <input type="password" id="password" placeholder="Password" />
+    <button onclick="login()">Masuk</button>
+    <p id="errorMsg" style="color:red;"></p>
+  </div>
 
   <script>
-    const last = localStorage.getItem('transaksiTerakhir');
-    const dataAdmin = document.getElementById('dataAdmin');
-
-    if (last) {
-      const t = JSON.parse(last);
-      dataAdmin.innerHTML = `<b>${t.nama}</b><br>Jumlah: Rp${t.jumlah}<br><small>${t.tanggal}</small>`;
-    } else {
-      dataAdmin.innerText = 'Tidak ada transaksi.';
-    }
-
-    function hapusData() {
-      localStorage.removeItem('transaksiTerakhir');
-      alert('Data transaksi dihapus.');
-      location.reload();
+    function login() {
+      const user = document.getElementById("username").value.trim();
+      const pass = document.getElementById("password").value.trim();
+      if (user === "admin" && pass === "12345") {
+        localStorage.setItem("adminLogged", "true");
+        window.location.href = "panel.html";
+      } else {
+        document.getElementById("errorMsg").innerText = "Login gagal!";
+      }
     }
   </script>
 </body>
