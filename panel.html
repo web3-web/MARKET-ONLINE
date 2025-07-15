@@ -1,1 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Panel Admin</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    body {
+      padding: 20px;
+      background: #f0fdf4;
+    }
 
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logout {
+      color: red;
+      cursor: pointer;
+    }
+
+    table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+      background: white;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #1e944d;
+      color: white;
+    }
+
+    .status-btn {
+      padding: 5px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .status-belum { background: #ffe6e6; color: red; }
+    .status-proses { background: #fff2cc; color: orange; }
+    .status-selesai { background: #e6ffe6; color: green; }
+  </style>
+</head>
+<body>
+
+  <div class="panel-header">
+    <h2>Admin Panel</h2>
+    <span class="logout" onclick="logout()">Keluar ⛔</span>
+  </div>
+
+  <table id="transaksiTable">
+    <thead>
+      <tr>
+        <th>Nama</th>
+        <th>Produk</th>
+        <th>Status</th>
+        <th>Ubah</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Isi data dari JS -->
+    </tbody>
+  </table>
+
+  <script>
+    const tbody = document.querySelector("#transaksiTable tbody");
+
+    if (!localStorage.getItem("adminLogged")) {
+      window.location.href = "login.html";
+    }
+
+    let data = JSON.parse(localStorage.getItem("riwayatTransaksi")) || [];
+
+    function renderTable() {
+      tbody.innerHTML = "";
+      data.forEach((trx, i) => {
+        let row = `
+          <tr>
+            <td>${trx.nama}</td>
+            <td>${trx.produk}</td>
+            <td><span class="status-btn status-${trx.status.toLowerCase()}">${trx.status}</span></td>
+            <td>
+              <select onchange="ubahStatus(${i}, this.value)">
+                <option value="Belum">Belum</option>
+                <option value="Proses">Proses</option>
+                <option value="Selesai">Selesai</option>
+              </select>
+            </td>
+          </tr>
+        `;
+        tbody.innerHTML += row;
+      });
+    }
+
+    function ubahStatus(index, statusBaru) {
+      data[index].status = statusBaru;
+      localStorage.setItem("riwayatTransaksi", JSON.stringify(data));
+      renderTable();
+    }
+
+    function logout() {
+      localStorage.removeItem("adminLogged");
+      window.location.href = "login.html";
+    }
+
+    renderTable();
+  </script>
+</body>
+</html>
