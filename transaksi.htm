@@ -2,38 +2,44 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Transaksi Saya</title>
+  <title>Transaksi</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="app-header">
     <div class="logo">
-      <img src="assets/logo.png">
-      <span>Transaksi</span>
+      <img src="assets/mutasi.png">
+      <span>Riwayat Transaksi</span>
     </div>
   </header>
 
   <section class="content">
     <h2>Riwayat Terakhir</h2>
     <div id="lastTransaksi">Memuat...</div>
-  </section>
 
-  <footer class="bottom-nav">
-    <div class="nav-item" onclick="location.href='index.html'"><img src="assets/home.png"><span>Beranda</span></div>
-    <div class="nav-item active"><img src="assets/transaksi.png"><span>Transaksi</span></div>
-    <div class="nav-item center"><img src="assets/more.png"></div>
-    <div class="nav-item" onclick="location.href='informasi.html'"><img src="assets/info.png"><span>Info</span></div>
-    <div class="nav-item" onclick="location.href='akun.html'"><img src="assets/user.png"><span>Akun</span></div>
-  </footer>
+    <h3>Konfirmasi Manual</h3>
+    <button onclick="konfirmasiManual()">Tandai Sudah Diterima</button>
+    <div id="konfirmasiStatus"></div>
+  </section>
 
   <script>
     const last = localStorage.getItem('transaksiTerakhir');
     const div = document.getElementById('lastTransaksi');
+    const status = document.getElementById('konfirmasiStatus');
+
     if (last) {
       const t = JSON.parse(last);
-      div.innerHTML = `<b>${t.nama}</b><br><small>${t.tanggal}</small>`;
+      div.innerHTML = `<b>${t.nama}</b><br>Jumlah: Rp${t.jumlah}<br><small>${t.tanggal}</small>`;
     } else {
       div.innerText = 'Belum ada transaksi.';
+    }
+
+    function konfirmasiManual() {
+      if (last) {
+        status.innerText = "✅ Transaksi dikonfirmasi manual oleh admin.";
+      } else {
+        status.innerText = "❌ Tidak ada transaksi yang bisa dikonfirmasi.";
+      }
     }
   </script>
 </body>
