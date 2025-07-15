@@ -70,3 +70,49 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("Transaksi terakhir:", t.nama, t.tanggal);
   }
 });
+
+// ===================
+// Form Pembelian & PDF
+// ===================
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("formTransaksi");
+  const notif = document.getElementById("notif");
+
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const nama = document.getElementById("namaPembeli").value;
+      const produk = document.getElementById("produkDipilih").value;
+
+      if (!nama || !produk) return;
+
+      const data = {
+        nama,
+        produk,
+        status: "Belum",
+        waktu: new Date().toLocaleString()
+      };
+
+      let riwayat = JSON.parse(localStorage.getItem("riwayatTransaksi")) || [];
+      riwayat.push(data);
+      localStorage.setItem("riwayatTransaksi", JSON.stringify(riwayat));
+
+      notif.innerText = "✅ Transaksi berhasil disimpan!";
+      form.reset();
+
+      generatePDF(data);
+    });
+  }
+});
+
+// Fungsi cetak PDF pakai jsPDF
+function generatePDF(data) {
+  const doc = new jsPDF();
+  doc.text("Struk Pembelian Xpay", 20, 20);
+  doc.text(`Nama: ${data.nama}`, 20, 30);
+  doc.text(`Produk: ${data.produk}`, 20, 40);
+  doc.text(`Status: ${data.status}`, 20, 50);
+  doc.text(`Waktu: ${data.waktu}`, 20, 60);
+  doc.save(`Struk-${data.nama}.pdf`)
+ }
