@@ -1,31 +1,44 @@
-<!DOCTYPE html><html lang="id">
+<!DOCTYPE html>
+<html lang="id">
 <head>
   <meta charset="UTF-8">
   <title>Xpay Active</title>
   <link rel="stylesheet" href="style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>  <!-- Header -->  <header class="app-header">
+<body>
+
+  <!-- Header -->
+  <header class="app-header">
     <div class="logo">
       <img src="assets/logo.png" alt="Logo">
       <span>RAJAWALI XPAY</span>
     </div>
     <div class="saldo-box">
       <p>Saldo akun</p>
-      <h3>Rp162</h3>
-      <small>🔵 10</small>
+      <h3 id="saldoRp">Rp0</h3>
+      <small>🔵 <span id="saldoKoin">0</span></small>
     </div>
-  </header>  <!-- Tombol cepat -->  <div class="quick-actions">
-    <div class="action"><img src="assets/akun.png"><span>Akun</span></div>
-    <div class="action"><img src="assets/chat.png"><span>Bantuan</span></div>
-    <div class="action"><img src="assets/mutasi.png"><span>Mutasi</span></div>
-    <div class="action"><img src="assets/topup.png"><span>Isi Saldo</span></div>
-  </div>  <!-- Banner -->  <div class="banner">
+  </header>
+
+  <!-- Tombol cepat -->
+  <div class="quick-actions">
+    <div class="action" onclick="location.href='akun.html'"><img src="assets/akun.png"><span>Akun</span></div>
+    <div class="action" onclick="location.href='informasi.html'"><img src="assets/chat.png"><span>Bantuan</span></div>
+    <div class="action" onclick="location.href='transaksi.html'"><img src="assets/mutasi.png"><span>Mutasi</span></div>
+    <div class="action" onclick="location.href='topup.html'"><img src="assets/topup.png"><span>Isi Saldo</span></div>
+  </div>
+
+  <!-- Banner -->
+  <div class="banner">
     <img src="assets/banner.png" alt="Promo WhatsApp">
-  </div>  <!-- Kebutuhan Harian -->  <section>
+  </div>
+
+  <!-- Kebutuhan Harian -->
+  <section>
     <h2 class="section-title">Kebutuhan Harian</h2>
     <div class="menu-grid">
-      <div class="menu-item"><img src="assets/pulsa.png"><span>Pulsa</span></div>
+      <div class="menu-item" onclick="location.href='topup.html'"><img src="assets/pulsa.png"><span>Pulsa</span></div>
       <div class="menu-item"><img src="assets/pulsatf.png"><span>Pulsa TF</span></div>
       <div class="menu-item"><img src="assets/data.png"><span>Paket Data</span></div>
       <div class="menu-item"><img src="assets/telpon.png"><span>Telp & SMS</span></div>
@@ -34,7 +47,10 @@
       <div class="menu-item"><img src="assets/ewallet.png"><span>E-Wallet</span></div>
       <div class="menu-item"><img src="assets/tsel.png"><span>Tsel Omni</span></div>
     </div>
-  </section>  <!-- Tagihan -->  <section>
+  </section>
+
+  <!-- Tagihan -->
+  <section>
     <h2 class="section-title">Tagihan</h2>
     <div class="menu-grid">
       <div class="menu-item"><img src="assets/pln2.png"><span>Tagihan PLN</span></div>
@@ -42,13 +58,16 @@
       <div class="menu-item"><img src="assets/gas.png"><span>Gas PGN</span></div>
       <div class="menu-item"><img src="assets/bpjs.png"><span>BPJS</span></div>
     </div>
-  </section>  <!-- Navigasi bawah -->  <footer class="bottom-nav">
-    <div class="nav-item active"><img src="assets/home.png"><span>Beranda</span></div>
-    <div class="nav-item"><img src="assets/transaksi.png"><span>Transaksi</span></div>
-    <div class="nav-item center"><img src="assets/more.png"></div>
-    <div class="nav-item"><img src="assets/info.png"><span>Informasi</span></div>
-    <div class="nav-item"><img src="assets/user.png"><span>Akun</span></div>
+  </section>
+
+  <!-- Navigasi bawah -->
+  <footer class="bottom-nav">
+    <div class="nav-item active" onclick="location.href='index.html'"><img src="assets/home.png"><span>Beranda</span></div>
+    <div class="nav-item" onclick="location.href='transaksi.html'"><img src="assets/transaksi.png"><span>Transaksi</span></div>
+    <div class="nav-item center" onclick="location.href='deposit.html'"><img src="assets/more.png"></div>
+    <div class="nav-item" onclick="location.href='informasi.html'"><img src="assets/info.png"><span>Informasi</span></div>
+    <div class="nav-item" onclick="location.href='akun.html'"><img src="assets/user.png"><span>Akun</span></div>
   </footer>
-  <script type="module" src="app.js"></script>
- </body>
+
+</body>
 </html>
