@@ -150,3 +150,18 @@ document.querySelectorAll(".menu-item, .action, .nav-item").forEach(el => {
     setTimeout(() => el.classList.remove("bounce"), 400);
   });
 });
+
+// Simpan akun dummy
+function simpanAkun() {
+  const nama = document.getElementById("akunNama").value;
+  const email = document.getElementById("akunEmail").value;
+  localStorage.setItem("akunNama", nama);
+  localStorage.setItem("akunEmail", email);
+  showToast("✅ Profil disimpan!");
+}
+
+// Tampilkan kembali data saat halaman akun dibuka
+if (document.getElementById("akunNama")) {
+  document.getElementById("akunNama").value = localStorage.getItem("akunNama") || "";
+  document.getElementById("akunEmail").value = localStorage.getItem("akunEmail") || "";
+}
