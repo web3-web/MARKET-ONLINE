@@ -21,6 +21,18 @@
     </div>
   </header>
 
+  <!-- 🔍 Live Search & Filter -->
+<section style="padding: 15px;">
+  <input type="text" id="searchInput" placeholder="🔍 Cari produk..." style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;" />
+  <div style="margin-top: 10px;">
+    <button onclick="filterKategori('all')">Semua</button>
+    <button onclick="filterKategori('pulsa')">Pulsa</button>
+    <button onclick="filterKategori('data')">Data</button>
+    <button onclick="filterKategori('pln')">PLN</button>
+    <button onclick="filterKategori('ewallet')">E-Wallet</button>
+  </div>
+</section>
+  
   <!-- Tombol cepat -->
   <div class="quick-actions">
     <div class="action" onclick="location.href='akun.html'"><img src="assets/akun.png"><span>Akun</span></div>
