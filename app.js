@@ -165,3 +165,13 @@ if (document.getElementById("akunNama")) {
   document.getElementById("akunNama").value = localStorage.getItem("akunNama") || "";
   document.getElementById("akunEmail").value = localStorage.getItem("akunEmail") || "";
 }
+
+function showToast(msg) {
+  const toast = document.getElementById("toast");
+  if (!toast) return;
+  toast.innerText = msg;
+  toast.style.display = "block";
+  setTimeout(() => {
+    toast.style.display = "none";
+  }, 2500);
+}
