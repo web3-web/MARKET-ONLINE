@@ -1,8 +1,8 @@
 // js/app.js
 
 // Saldo awal
-let saldoRp = 162;
-let saldoKoin = 10;
+let saldoRp = 0;
+let saldoKoin = 0;
 
 // Simpan transaksi ke localStorage
 function simpanTransaksi(nama) {
@@ -116,3 +116,29 @@ function generatePDF(data) {
   doc.text(`Waktu: ${data.waktu}`, 20, 60);
   doc.save(`Struk-${data.nama}.pdf`)
  }
+
+// ===================
+// Live Search & Filter
+// ===================
+const searchInput = document.getElementById("searchInput");
+if (searchInput) {
+  searchInput.addEventListener("input", function () {
+    const keyword = this.value.toLowerCase();
+    document.querySelectorAll(".menu-item").forEach(item => {
+      const text = item.innerText.toLowerCase();
+      item.style.display = text.includes(keyword) ? "flex" : "none";
+    });
+  });
+}
+
+// Filter Kategori
+function filterKategori(kategori) {
+  document.querySelectorAll(".menu-item").forEach(item => {
+    const label = item.innerText.toLowerCase();
+    if (kategori === "all") {
+      item.style.display = "flex";
+    } else {
+      item.style.display = label.includes(kategori) ? "flex" : "none";
+    }
+  });
+}
