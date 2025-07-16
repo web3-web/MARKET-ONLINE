@@ -142,3 +142,11 @@ function filterKategori(kategori) {
     }
   });
 }
+
+// Efek animasi saat klik menu
+document.querySelectorAll(".menu-item, .action, .nav-item").forEach(el => {
+  el.addEventListener("click", () => {
+    el.classList.add("bounce");
+    setTimeout(() => el.classList.remove("bounce"), 400);
+  });
+});
